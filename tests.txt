@@ -1,0 +1,29 @@
+//arrow marker
+  svg.append("defs")
+    .append("marker")
+      .attr("id", 'Marker')
+      .attr("viewBox", "0 0 10 10")
+      .attr("refX", 0)
+      .attr("refY", 5)
+      .attr("markerWidth", 3)
+      .attr("markerHeight", 3)
+      .attr("orient", "auto")
+    .append("path")
+      .attr("d", "M 0 0 L 10 5 L 0 10 z");
+
+  //arrows
+  svg.selectAll('g')
+    .data(dataXY)
+    .enter()
+    .append('g')
+    .attr('transform',function(d){return 'translate('+(d[0])+','+(d[1])+')';})
+    .append('line')
+    .attr('class','arrow')
+    .attr('x1',L/2)
+    .attr('y1',-L/2)
+    .attr('x2',L/2)
+    .attr('y2',0)
+    .attr("marker-end", "url(#Marker)");
+
+
+    Math.atan2((d[1]-my),(d[0]-mx))*180/Math.PI+180;
