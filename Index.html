@@ -50,6 +50,7 @@
 
 	var selectCharge = function(event) {
 		var sel = event.target.id;
+
 		if (sel == 'mas1') {
 			selectedCharge = 1;
 			mas1.style('border-color', '#58ACFA');
@@ -63,7 +64,6 @@
 
 	//to prevent body movement in mobile devices
 	d3.select("body")
-		.on("touchstart", nozoom)
 		.on("touchmove", nozoom);
 
 	function nozoom() {
@@ -167,7 +167,7 @@
 				return d[2] == 0;
 			}))
 			.attr('transform', function(d) {
-				var s = 2 * totalField(d).modulus / (1 + totalField(d).modulus);
+				var s = 3 * totalField(d).modulus / (1 + totalField(d).modulus);
 				var a = totalField(d).angle;
 				return 'matrix(' +
 					(s * Math.cos(a)) + ',' +
@@ -203,10 +203,7 @@
 
 		updateField();
 
-		// console.log(i,j);
-		// console.log(dataXY[nx*j+i]);
-
-		d3.event.preventDefault();
+		//d3.event.preventDefault();
 
 	});
 
